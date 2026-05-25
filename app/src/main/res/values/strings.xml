@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Corridômetro</string>
+    <!-- Preenchido automaticamente ao adicionar google-services.json (Firebase) -->
+    <string name="default_web_client_id" translatable="false" />
+    <!-- AdMob: enquanto estes IDs de teste estiverem aqui, o app nao exibe anuncios.
+         Troque pelos IDs reais para reativar banner + intersticial. -->
+    <string name="admob_app_id" translatable="false">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="admob_banner_unit_id" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="admob_interstitial_unit_id" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="premium_fallback_price" translatable="false">R$ 20,00/mês</string>
+</resources>

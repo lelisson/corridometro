@@ -1,0 +1,131 @@
+PUBLICAR CORRIDOMETRO NA GOOGLE PLAY STORE
+==========================================
+Conta desenvolvedor: devlelissoncampos@gmail.com
+App recomendado: VERSAO OFICIAL = standard + conceptA (design A)
+Pacote: com.corridometro
+Versao atual no codigo: 2.2.2 (versionCode 11)
+
+NAO envie APK debug — a Play exige .aab ASSINADO (releases/oficial/ ou releases/playstore/).
+
+----------------------------------------------------------------------
+PARTE A — PREPARAR O PACOTE NO PC (UMA VEZ + A CADA UPDATE)
+----------------------------------------------------------------------
+
+1) Criar chave de assinatura (so na primeira vez):
+
+     .\create-release-keystore.ps1
+
+   Guarde keystore/ e as senhas em local seguro (nuvem criptografada).
+   Se perder, nao consegue atualizar o mesmo app na Play.
+
+2) (Opcional) Firebase / sync Google:
+   - app/google-services.json
+   - Veja FIREBASE_SETUP.txt
+
+3) Assinatura Premium na Play (antes de testar compra):
+   - Veja PLAY_BILLING_SETUP.txt
+   - Produto: corridometro_premium_mensal (R$ 20/mes)
+
+4) AdMob (anuncios):
+   - Troque admob_app_id, admob_banner_unit_id e admob_interstitial_unit_id em
+     app/src/main/res/values/strings.xml pelos IDs reais do AdMob
+
+5) Gerar pacote oficial (APK arquivo + AAB Play):
+
+     .\build-oficial.ps1
+
+   Ou somente AAB:
+     .\build-play-bundle.ps1
+
+  Arquivo para upload na Play:
+    releases/oficial/corridometro-vX.Y.Z-N-playstore.aab
+     (mesmo arquivo em releases/playstore/)
+
+6) SHA-1 e SHA-256 do RELEASE (Firebase + Play):
+
+     .\gradlew.bat signingReport
+
+  Copie SHA-1 e SHA-256 da variante standardConceptARelease
+   Firebase > Project Settings > app Android > Add fingerprint
+
+----------------------------------------------------------------------
+PARTE B — PLAY CONSOLE (play.google.com/console)
+----------------------------------------------------------------------
+
+Login: devlelissoncampos@gmail.com
+
+1) CRIAR O APP (se ainda nao existir)
+   - Criar app
+   - Nome: Corridometro
+   - Idioma padrao: Portugues (Brasil)
+   - App ou jogo: App
+   - Gratuito (com compras no app e anuncios)
+
+2) ID DO PACOTE
+   Deve ser exatamente: com.corridometro
+  (igual ao applicationId da variante oficial standardConceptA)
+
+3) FICHA DA LOJA (minimo para revisao)
+   - Titulo curto, descricao completa
+   - Icone 512x512, grafico 1024x500
+   - Pelo menos 2 screenshots de telefone
+   - Categoria: Financas ou Produtividade
+   - E-mail de contato: devlelissoncampos@gmail.com
+   - URL politica de privacidade (obrigatorio)
+     (pode ser pagina simples no GitHub Pages / Google Sites)
+
+4) CONTEUDO DO APP
+   - Questionario classificacao etaria
+   - Declaracao de anuncios: SIM (AdMob)
+   - Compras no app: SIM (assinatura Premium)
+   - Data safety: informar dados que o app usa (local, opcional nuvem)
+
+5) MONETIZACAO
+   - Assinaturas: criar corridometro_premium_mensal (PLAY_BILLING_SETUP.txt)
+   - Vincular conta AdMob ao app na Play Console (Monetizacao > Configuracao)
+
+6) TESTE INTERNO (recomendado antes de producao)
+   - Teste e lancamento > Teste interno > Criar nova versao
+   - Enviar o .aab de releases/playstore/
+   - Adicionar testadores (seu Gmail)
+   - Abrir o link de teste no celular e instalar PELA PLAY
+   - Testar: jornada, Premium, anuncios, restaurar assinatura
+
+7) PRODUCAO
+   - Teste e lancamento > Producao > Criar nova versao
+   - Enviar o mesmo .aab (ou novo apos subir versionCode)
+   - Preencher "O que ha de novo"
+   - Enviar para revisao (pode levar de 1 a 7+ dias)
+
+----------------------------------------------------------------------
+PARTE C — ATUALIZACOES FUTURAS
+----------------------------------------------------------------------
+
+1) Em app/build.gradle.kts aumente versionCode e versionName
+2) .\build-play-bundle.ps1
+3) Play Console > nova versao > enviar novo .aab
+4) Use SEMPRE a mesma keystore (corridometro-release.jks)
+
+----------------------------------------------------------------------
+QUAL VERSAO SALVA USAR?
+----------------------------------------------------------------------
+
+  releases/paga/     = referencia (APK debug) — NAO enviar na Play
+  releases/playstore/ = .aab para upload (apos build-play-bundle.ps1)
+  releases/login/    = outro app (com.corridometro.login) — NAO misturar
+
+----------------------------------------------------------------------
+PROBLEMAS COMUNS
+----------------------------------------------------------------------
+
+  "Voce precisa fazer upload de um APK ou Android App Bundle"
+    -> Envie o .aab, nao APK debug.
+
+  Compra Premium nao abre
+    -> App instalado via teste interno + assinatura criada na Console.
+
+  Login Google / sync falha
+    -> google-services.json + SHA-1 release no Firebase.
+
+  Rejeicao por politica de privacidade
+    -> URL publica descrevendo dados (jornada, gastos, conta Google opcional).

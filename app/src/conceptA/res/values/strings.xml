@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Corridômetro</string>
+    <string name="design_variant_description">Mockup Início — igual à imagem do dashboard (herói, 7d/30d, 3 métricas, por aplicativo).</string>
+</resources>

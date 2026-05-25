@@ -1,0 +1,59 @@
+COMO VISUALIZAR O APP ANTES DE SALVAR UMA VERSAO
+=================================================
+
+Opcao 1 — Preview no Android Studio (mais rapido, sem emulador)
+---------------------------------------------------------------
+1. Abra o projeto no Android Studio
+2. Abra o arquivo:
+     app/src/main/java/com/corridometro/ui/preview/ScreenPreviews.kt
+3. Menu View > Tool Windows > Preview  (ou Split / Design)
+4. Clique em "Build & Refresh" se pedir
+5. Veja os paineis (arquivo ConceptPreviews.kt — grupos no Preview):
+   Conceito A (Inicio):
+   - A — Inicio com dados
+   - A — Inicio vazio
+   - A — Periodo personalizado
+   - A — Hero lucro / Hero vazio
+   - A — Periodo segmentado / Triangulo financeiro
+   - A — App completo (aba Inicio)
+   Conceito B (Jornada):
+   - B — Preview ao vivo
+   - B — Formulario (estrutura)
+   - B — Historico hoje / vazio
+   - B — Jornada completa
+   - B — App completo (aba Jornada)
+   Legado (ScreenPreviews.kt): planos, relatorio do dia, gastos, etc.
+
+Dados de exemplo estao em PreviewSampleData.kt (valores ficticios).
+
+Opcao 2 — Android Studio (app interativo no emulador)  RECOMENDADO
+------------------------------------------------------------------
+1. Uma vez: .\setup-android-studio.ps1
+2. Android Studio > Open > c:\corridometro > Gradle Sync
+3. Device Manager > inicie um emulador
+4. Barra superior: "Corridometro (oficial)" > Run (verde)
+
+   Guia passo a passo: ANDROID_STUDIO_INTERATIVO.txt
+
+Opcao 3 — PowerShell (emulador ou celular USB)
+----------------------------------------------
+1. Inicie o emulador ou conecte o celular (depuracao USB)
+2. .\preview-app.ps1
+
+Opcao 4 — So compilar APK sem instalar
+--------------------------------------
+     .\build-apk.ps1          (Corridometro A / oficial standardConceptA)
+
+Opcao 5 — Dois APKs de design (A + B) para o celular
+----------------------------------------------------
+     .\build-design-apks.ps1
+     Saida: app/designs/output/
+      corridometro-design-a-debug.apk  (icone verde, com.corridometro)
+       corridometro-design-b-debug.apk  (icone azul,  com.corridometro.design.b)
+     Detalhes: app/designs/README.md
+
+Fluxo recomendado antes de versionar
+------------------------------------
+1. Conferir visual no Preview (Opcao 1) ou preview-app.ps1 (Opcao 2)
+2. Se estiver ok, dizer ao assistente se a atualizacao e importante
+3. So entao salvar versao em releases/

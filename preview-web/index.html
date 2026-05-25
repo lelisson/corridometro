@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Corridômetro — prévia UI 2.1</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f2f4f7;
+      --surface: #ffffff;
+      --border: #d0d5dd;
+      --text: #101828;
+      --muted: #667085;
+      --primary: #16a34a;
+      --primary-soft: #dcfce7;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Roboto, system-ui, sans-serif;
+      background: #e8ecf1;
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 16px 48px;
+    }
+    .banner {
+      max-width: 420px;
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .banner strong { color: var(--text); }
+    .phone {
+      width: 100%;
+      max-width: 390px;
+      background: var(--bg);
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(16, 24, 40, 0.08);
+    }
+    .status { height: 28px; background: var(--surface); }
+    .screen { padding: 12px 16px 24px; display: flex; flex-direction: column; gap: 14px; }
+    .block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+    }
+    .block h2 { margin: 0 0 4px; font-size: 16px; font-weight: 600; }
+    .block .sub { margin: 0 0 12px; font-size: 13px; color: var(--muted); }
+    .plan {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+    .plan.selected { border: 2px solid var(--primary); background: var(--primary-soft); }
+    .plan .title { font-weight: 600; font-size: 15px; }
+    .plan .period { font-size: 12px; color: var(--muted); }
+    .plan .hint { font-size: 12px; color: var(--primary); margin-top: 4px; }
+    .plan .price { font-weight: 700; font-size: 18px; color: var(--primary); }
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 4px;
+    }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text); margin-top: 8px; }
+    .divider { height: 1px; background: var(--border); margin: 14px 0; }
+    .renew h3 { margin: 0 0 6px; font-size: 14px; font-weight: 600; }
+    .renew p { margin: 0; font-size: 12px; color: var(--muted); line-height: 1.5; }
+    .metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 13px; }
+    .metrics span { color: var(--muted); display: block; font-size: 11px; }
+    .nav {
+      display: flex;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+    }
+    .nav button {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      background: none;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .nav button.active { color: var(--primary); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="banner">
+    <strong>Prévia web</strong> — blocos Material + índice <strong>Planos de assinatura</strong>.
+    Valide o visual aqui; o app real roda no Android.
+  </div>
+
+  <div class="phone">
+    <div class="status"></div>
+    <div class="screen">
+      <div class="block">
+        <h2>Início</h2>
+        <p class="sub">Lucro real na palma da mão</p>
+      </div>
+
+      <div class="block">
+        <h2>Planos de assinatura</h2>
+        <p class="sub">Sem anúncios e benefícios futuros. Cobrança pela Google Play.</p>
+
+        <div class="plan selected" data-plan="mensal">
+          <div>
+            <div class="title">Mensal</div>
+            <div class="period">por mês</div>
+          </div>
+          <div class="price">R$ 20,00</div>
+        </div>
+        <div class="plan" data-plan="semestral">
+          <div>
+            <div class="title">Semestral</div>
+            <div class="period">6 meses</div>
+            <div class="hint">Economize vs. mensal</div>
+          </div>
+          <div class="price">R$ 100,00</div>
+        </div>
+        <div class="plan" data-plan="anual">
+          <div>
+            <div class="title">Anual</div>
+            <div class="period">por ano</div>
+            <div class="hint">Melhor custo-benefício</div>
+          </div>
+          <div class="price">R$ 200,00</div>
+        </div>
+
+        <button class="btn btn-primary" id="cta">Assinar Mensal — R$ 20,00</button>
+        <button class="btn btn-outline" type="button">Restaurar assinatura</button>
+
+        <div class="divider"></div>
+        <div class="renew">
+          <h3>Renovação da assinatura</h3>
+          <p>A renovação é automática pela Google Play no fim de cada período (mês, semestre ou ano), usando o plano escolhido. Cancele quando quiser em Play Store → Pagamentos e assinaturas → Assinaturas.</p>
+        </div>
+      </div>
+
+      <div class="block">
+        <h2>Resumo do período</h2>
+        <p class="sub">Receita, custos e desempenho</p>
+        <div class="metrics">
+          <div><span>Faturamento</span>R$ 630,00</div>
+          <div><span>Lucro líquido</span>R$ 412,50</div>
+          <div><span>Lucro / km</span>R$ 2,14</div>
+          <div><span>Corridas</span>26</div>
+        </div>
+      </div>
+    </div>
+    <div class="nav">
+      <button class="active" type="button">Início</button>
+      <button type="button">Jornada</button>
+    </div>
+  </div>
+
+  <script>
+    const plans = {
+      mensal: { label: 'Mensal', price: 'R$ 20,00' },
+      semestral: { label: 'Semestral', price: 'R$ 100,00' },
+      anual: { label: 'Anual', price: 'R$ 200,00' },
+    };
+    const cta = document.getElementById('cta');
+    document.querySelectorAll('.plan').forEach((el) => {
+      el.addEventListener('click', () => {
+        document.querySelectorAll('.plan').forEach((p) => p.classList.remove('selected'));
+        el.classList.add('selected');
+        const p = plans[el.dataset.plan];
+        cta.textContent = 'Assinar ' + p.label + ' — ' + p.price;
+      });
+    });
+  </script>
+</body>
+</html>

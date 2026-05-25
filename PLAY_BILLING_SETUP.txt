@@ -1,0 +1,86 @@
+ASSINATURA PREMIUM — GOOGLE PLAY BILLING (R$ 20/mês)
+=====================================================
+
+O app usa tres assinaturas (crie todas na Play Console):
+
+  corridometro_premium_mensal     R$ 20,00 / mes
+  corridometro_premium_semestral  R$ 100,00 / 6 meses
+  corridometro_premium_anual      R$ 200,00 / ano
+
+Os precos sao definidos na Play Console; no app aparecem fallbacks
+ate a loja retornar os valores reais.
+
+----------------------------------------------------------------------
+1) CONTA DE DESENVOLVEDOR
+----------------------------------------------------------------------
+  https://play.google.com/console
+  Taxa única de desenvolvedor (se ainda não tiver).
+
+----------------------------------------------------------------------
+2) CRIAR ASSINATURAS (3 PRODUTOS)
+----------------------------------------------------------------------
+  Play Console > Seu app > Monetização > Produtos > Assinaturas
+
+  Crie UMA assinatura para cada ID (copie exatamente):
+
+  A) corridometro_premium_mensal
+     Plano: 1 mes — BRL 20,00
+
+  B) corridometro_premium_semestral
+     Plano: 6 meses (ou periodo semestral) — BRL 100,00
+
+  C) corridometro_premium_anual
+     Plano: 1 ano — BRL 200,00
+
+  Beneficios (todos): sem anuncios + recursos futuros
+  Ative e salve. Pode levar algumas horas para propagar.
+
+  Na tela Inicio do app: indice "Planos de assinatura" com os tres valores
+  e texto de renovacao automatica.
+
+----------------------------------------------------------------------
+3) TESTAR ANTES DE PUBLICAR
+----------------------------------------------------------------------
+  Play Console > Configuração > Teste de licença
+  Adicione e-mails de testadores Google.
+
+  Instale o app por:
+    - Teste interno/fechado na Play, OU
+    - APK assinado com a mesma chave cadastrada na Play
+
+  Compras de teste não cobram de verdade.
+
+----------------------------------------------------------------------
+4) ADMOB (ANÚNCIOS — SÓ QUEM NÃO É PREMIUM)
+----------------------------------------------------------------------
+  Crie app no https://admob.google.com/
+  Vincule ao pacote com.corridometro (e .login se usar essa variante)
+
+  Substitua em app/src/main/res/values/strings.xml:
+    admob_app_id               → seu App ID AdMob
+    admob_banner_unit_id       → seu Banner ID
+    admob_interstitial_unit_id → seu Intersticial ID
+
+  Enquanto não substituir, o app usa IDs de TESTE do Google.
+
+----------------------------------------------------------------------
+5) GERAR APK
+----------------------------------------------------------------------
+  .\build-apk-flavor.ps1 standard
+  ou .\build-apk.ps1
+
+----------------------------------------------------------------------
+NO APP (USUÁRIO)
+----------------------------------------------------------------------
+  Início > card "Seja Premium" > Assinar
+  A compra usa a conta Google da Play Store do celular.
+  Não é necessário login Firebase no app padrão.
+
+  "Restaurar assinatura" — ao trocar de celular, mesma conta Play.
+
+----------------------------------------------------------------------
+PROBLEMAS
+----------------------------------------------------------------------
+  - "Plano não disponível" → assinatura não criada ou ID diferente
+  - Compra não abre → app não instalado via Play / testador não configurado
+  - Premium não ativa → aguarde confirmação; toque em Restaurar assinatura
