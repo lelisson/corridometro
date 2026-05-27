@@ -1,4 +1,4 @@
 @echo off
 cd /d "%~dp0"
-powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0build-apk.ps1"
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\build\build-apk.ps1"
 pause

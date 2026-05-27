@@ -29,7 +29,6 @@ releases/**/*.aab
 # AI/editor local config
 .cursor/
 .claude/
-config/android-studio/
 AGENTS.md
 CLAUDE.md
 

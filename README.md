@@ -1,85 +1,84 @@
 # Corridômetro
 
-App Android para motoristas de aplicativo registrarem jornadas, ganhos, custos e acompanharem o lucro real por período e por plataforma.
+App Android para motoristas de aplicativo registrarem jornadas, ganhos, custos e acompanhar o **lucro líquido** por período e por plataforma.
 
-## Visão geral
-
-O Corridômetro foi pensado para uso prático no dia a dia de quem trabalha com apps de corrida e entrega. O foco é mostrar quanto realmente sobra depois dos custos, com uma interface simples e rápida para registrar jornadas e consultar relatórios.
-
-## Principais recursos
-
-- registro de jornadas com plataforma, horário, km, faturamento e despesas
-- resumo de lucro líquido, faturamento, custos e `R$/km`
-- filtros por período
-- visão por aplicativo
-- relatórios e histórico
-- assinatura Premium via Google Play
-- estrutura preparada para anúncios e integrações opcionais do Google
-
-## Stack
-
-- `Kotlin`
-- `Jetpack Compose`
-- `Room`
-- `ViewModel` + `Flow`
-- `Google Play Billing`
-- `AdMob` (ativado somente quando IDs reais estiverem configurados)
-
-## Executar o projeto
-
-1. Instale o [Android Studio](https://developer.android.com/studio).
-2. Abra a pasta `corridometro`.
-3. Aguarde o Gradle Sync.
-4. Rode no emulador ou em um dispositivo Android com depuração USB.
-
-Build local principal:
-
-```powershell
-.\build-apk.ps1
-```
-
-Bundle oficial para Play Store:
-
-```powershell
-.\build-play-bundle.ps1
-```
-
-## Estrutura
-
-```text
-app/src/main/java/com/corridometro/
-├── data/
-├── domain/
-├── ui/
-└── util/
-```
-
-## Publicação
-
-- pacote oficial: `com.corridometro`
-- variante oficial: `standardConceptA`
-- política de privacidade: `docs/privacy-policy.html`
-
-## Segurança do repositório
-
-Este projeto foi configurado para **não publicar** arquivos sensíveis comuns, como:
-
-- `google-services.json`
-- `keystore.properties`
-- arquivos `.jks` e keystores
-- builds `.apk` e `.aab`
-- configurações locais do editor
-
-Mesmo assim, antes de fazer o primeiro push, vale revisar com atenção tudo que estiver staged no `git`.
-
-## Política de privacidade
-
-Arquivo local:
-
-`docs/privacy-policy.html`
-
-Quando você publicar essa página no GitHub Pages, Google Sites ou outro host estático, use a URL pública na Play Console.
+[![Repositório](https://img.shields.io/github/stars/lelisson/corridometro?style=social)](https://github.com/lelisson/corridometro)
 
 ## Status
 
-Projeto em desenvolvimento e preparação para publicação na Google Play Store.
+- **Play Console:** `com.corridometro` (variante oficial `standardConceptA`)
+- **Privacidade:** https://lelisson.github.io/corridometro/privacy-policy.html
+- **Repositório:** público — leia [SECURITY.md](SECURITY.md) antes de qualquer commit
+
+## Recursos
+
+- Jornadas com plataforma, horário, km, faturamento e despesas
+- Resumo de lucro, faturamento, custos e R$/km
+- Filtros por período e visão por app
+- Relatórios e histórico
+- Assinatura Premium (Google Play Billing)
+- AdMob quando IDs reais estiverem em `strings.xml`
+
+## Stack
+
+Kotlin · Jetpack Compose · Room · ViewModel + Flow · Play Billing
+
+## Começar
+
+1. [Android Studio](https://developer.android.com/studio) — abrir a pasta do projeto
+2. Gradle Sync
+3. Emulador ou dispositivo USB com depuração
+
+**Preview rápido (sem instalar):** `app/.../ui/preview/ScreenPreviews.kt` → aba Preview
+
+**App interativo:** [docs/guides/development/android-studio.md](docs/guides/development/android-studio.md)
+
+## Build
+
+```powershell
+# APK debug oficial
+.\scripts\build\build-apk.ps1
+
+# Bundle para Play Store (requer keystore.properties)
+.\scripts\build\build-play-bundle.ps1
+```
+
+Atalho Windows: `build-apk.bat`
+
+Mais scripts: [scripts/README.md](scripts/README.md)
+
+## Estrutura do repositório
+
+```text
+corridometro/
+├── app/                 # Código Android + designs/logo
+├── docs/                # Política de privacidade e guias
+├── firebase/            # Regras Firestore
+├── config/              # Exemplos (keystore, Run do Android Studio)
+├── scripts/             # Build, dev, release, setup
+├── releases/            # Histórico VERSIONS.md (APKs locais)
+├── preview-web/         # Mockups HTML
+└── SECURITY.md          # O que nunca commitar
+```
+
+Código principal: `app/src/main/java/com/corridometro/`
+
+## Publicação
+
+| Item | Valor |
+|------|--------|
+| Pacote | `com.corridometro` |
+| Variante | `standardConceptA` |
+| Guia | [docs/guides/publishing/play-store.md](docs/guides/publishing/play-store.md) |
+
+## Documentação
+
+Índice completo: [docs/README.md](docs/README.md)
+
+## Segurança
+
+Nunca commite `google-services.json`, `keystore.properties`, `*.jks` ou APKs/AABs. Detalhes em [SECURITY.md](SECURITY.md).
+
+## Licença
+
+Código do autor. Uso e distribuição conforme política do repositório no GitHub.
