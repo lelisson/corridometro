@@ -87,7 +87,7 @@ object PreviewSampleData {
 
     val dashboardSignedIn = dashboardUiState.copy(
         cloudConfigured = true,
-        signedInEmail = "motorista@gmail.com",
+        signedInEmail = "usuario@exemplo.com",
         signedInDisplayName = "João Motorista",
     )
 

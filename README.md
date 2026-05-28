@@ -77,7 +77,10 @@ Código principal: `app/src/main/java/com/corridometro/`
 
 ## Segurança
 
-Nunca commite `google-services.json`, `keystore.properties`, `*.jks` ou APKs/AABs. Detalhes em [SECURITY.md](SECURITY.md).
+Nunca commite `google-services.json`, `keystore.properties`, `*.jks` ou APKs/AABs.
+
+- [SECURITY.md](SECURITY.md) — o que não publicar no Git
+- [docs/guides/security/repository-and-app.md](docs/guides/security/repository-and-app.md) — checklist completo
 
 ## Licença
 

@@ -38,7 +38,7 @@ fun buildFirebaseSetupSteps(
     FirebaseSetupStep(
         id = 3,
         title = "google-services.json",
-        description = "Baixe o JSON no Firebase e coloque em: app/google-services.json. Depois rode: .\\build-apk-flavor.ps1 login",
+        description = "Baixe o JSON no Firebase e coloque em app/google-services.json (arquivo local, nao versionado).",
         isComplete = hasGoogleServicesFile,
         isVerifiedInApp = true,
     ),
@@ -60,7 +60,7 @@ fun buildFirebaseSetupSteps(
     FirebaseSetupStep(
         id = 6,
         title = "Firestore (banco na nuvem)",
-        description = "Crie o banco Firestore. Dados ficam em users/{uid}/work_shifts e expenses.",
+        description = "Crie o banco Firestore e publique regras que limitam cada usuario aos proprios dados.",
         isComplete = hasWebClientId && firebaseInitialized,
         isVerifiedInApp = false,
         consoleUrl = "https://console.firebase.google.com/project/_/firestore",

@@ -118,7 +118,7 @@ fun FirebaseSetupScreen(
         }
         Spacer(modifier = Modifier.height(8.dp))
         Text(
-            text = "Guia completo no PC: FIREBASE_SETUP_LOGIN.txt na pasta do projeto.",
+            text = "Documentacao no repositorio: docs/guides/integrations/firebase-login.md",
             style = MaterialTheme.typography.bodySmall,
             color = TextSecondary,
         )

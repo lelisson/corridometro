@@ -9,5 +9,6 @@
 | Assinaturas Premium | [guides/publishing/play-billing.md](guides/publishing/play-billing.md) |
 | Firebase (oficial) | [guides/integrations/firebase.md](guides/integrations/firebase.md) |
 | Firebase (variante login) | [guides/integrations/firebase-login.md](guides/integrations/firebase-login.md) |
+| Segurança | [guides/security/repository-and-app.md](guides/security/repository-and-app.md) |
 
 Scripts PowerShell: [../scripts/README.md](../scripts/README.md)

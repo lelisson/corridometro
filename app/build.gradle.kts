@@ -152,7 +152,7 @@ gradle.projectsEvaluated {
             |
             | [Corridometro] google-services.json AUSENTE em app/
             |   - Variante login: login Google NAO funcionara ate configurar Firebase.
-            |   - Siga: FIREBASE_SETUP_LOGIN.txt ou rode: .\check-firebase-setup.ps1
+            |   - Siga: docs/guides/integrations/firebase-login.md
             |
             """.trimMargin(),
         )

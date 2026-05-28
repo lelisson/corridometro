@@ -1,7 +1,7 @@
 # Publicar na Google Play Store
 
-**Conta:** devlelissoncampos@gmail.com  
 **App oficial:** `standard` + `conceptA` → pacote `com.corridometro`  
+**Conta Play:** use a conta de desenvolvedor configurada na [Play Console](https://play.google.com/console) (não documente e-mail pessoal no repositório).  
 **Versão no código:** ver `versionCode` / `versionName` em `app/build.gradle.kts`
 
 A Play exige **`.aab` assinado** — não envie APK debug.
